@@ -165,13 +165,9 @@ export default function Home() {
             <span className="text-2xl flex-shrink-0">⚠️</span>
             <div className="flex-1">
               <p className="text-xs md:text-sm text-yellow-900 dark:text-yellow-200 mb-2">
-                <strong>重要:</strong> 本サービスは医療行為ではありません。AIによる一般的な助言のみを提供します。
+                <strong>重要:</strong> 本サービスは医療行為ではありません。AIによる一般的な助言のみを提供します。深刻な心理的問題がある場合は、必ず専門家（医師、臨床心理士、カウンセラー）にご相談ください。
               </p>
-              <ul className="text-xs text-yellow-800 dark:text-yellow-300 space-y-1 ml-4 list-disc">
-                <li>深刻な心理的問題がある場合は、必ず専門家（医師、臨床心理士、カウンセラー）にご相談ください</li>
-                <li>緊急時は、いのちの電話（0570-783-556）等の専門機関にご連絡ください</li>
-              </ul>
-              <div className="mt-3">
+              <div className="mt-2">
                 <Link
                   href="/terms"
                   className="text-xs text-blue-700 dark:text-blue-400 hover:underline font-medium"
@@ -383,21 +379,12 @@ export default function Home() {
           <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
             💙 泣くことは弱さじゃない。感情をケアすることは、強さです。
           </p>
-          <div className="flex items-center justify-center gap-4 text-xs md:text-sm">
-            <Link
-              href="/terms"
-              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors"
-            >
-              利用規約・免責事項
-            </Link>
-            <span className="text-gray-400 dark:text-gray-600">|</span>
-            <a
-              href="tel:0570-783-556"
-              className="text-red-600 dark:text-red-400 hover:underline font-medium"
-            >
-              📞 緊急時: いのちの電話
-            </a>
-          </div>
+          <Link
+            href="/terms"
+            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors text-xs md:text-sm"
+          >
+            利用規約・免責事項
+          </Link>
           <p className="text-gray-500 dark:text-gray-500 text-xs md:text-sm">
             Powered by Gemini AI
           </p>
