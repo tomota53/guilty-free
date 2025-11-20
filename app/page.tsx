@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 
@@ -9,6 +9,44 @@ export default function Home() {
   const [aiResponse, setAiResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+  const [displayedResponse, setDisplayedResponse] = useState('');
+
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const responseRef = useRef<HTMLDivElement>(null);
+
+  // ページ読み込み時に入力エリアにフォーカス
+  useEffect(() => {
+    if (!aiResponse && textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  }, [aiResponse]);
+
+  // AI応答のタイピングアニメーション
+  useEffect(() => {
+    if (!aiResponse) {
+      setDisplayedResponse('');
+      return;
+    }
+
+    let currentIndex = 0;
+    setDisplayedResponse('');
+
+    const typingInterval = setInterval(() => {
+      if (currentIndex < aiResponse.length) {
+        setDisplayedResponse(aiResponse.slice(0, currentIndex + 1));
+        currentIndex++;
+
+        // スクロール
+        if (responseRef.current) {
+          responseRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      } else {
+        clearInterval(typingInterval);
+      }
+    }, 20); // 20msごとに1文字追加
+
+    return () => clearInterval(typingInterval);
+  }, [aiResponse]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -120,6 +158,7 @@ export default function Home() {
                 </label>
 
                 <textarea
+                  ref={textareaRef}
                   value={guiltContent}
                   onChange={(e) => {
                     setGuiltContent(e.target.value);
@@ -138,6 +177,22 @@ export default function Home() {
                   >
                     {error}
                   </motion.p>
+                )}
+
+                {/* ローディングプログレスバー */}
+                {isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="mt-4"
+                  >
+                    <div className="w-full bg-gray-200 dark:bg-gray-700 rounded-full h-2 overflow-hidden">
+                      <div className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full animate-progress"></div>
+                    </div>
+                    <p className="text-xs text-gray-500 dark:text-gray-400 text-center mt-2">
+                      AIが分析中です...
+                    </p>
+                  </motion.div>
                 )}
 
                 <button
@@ -182,9 +237,12 @@ export default function Home() {
                   </div>
                 </div>
 
-                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 mb-6">
+                <div ref={responseRef} className="bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-700 dark:to-gray-600 rounded-xl p-6 mb-6">
                   <p className="text-gray-700 dark:text-gray-200 whitespace-pre-wrap leading-relaxed text-base md:text-lg">
-                    {aiResponse}
+                    {displayedResponse}
+                    {displayedResponse.length < aiResponse.length && (
+                      <span className="inline-block w-1 h-5 bg-blue-600 dark:bg-blue-400 ml-1 animate-pulse"></span>
+                    )}
                   </p>
                 </div>
 
