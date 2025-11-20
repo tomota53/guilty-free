@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import { supabase } from '@/lib/supabase';
+import { maskConsultationData } from '@/lib/maskPersonalInfo';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
@@ -45,7 +46,12 @@ export default function HistoryPage() {
 
       if (error) throw error;
 
-      setConsultations(data || []);
+      // 個人情報をマスキング
+      const maskedData = (data || []).map((consultation) =>
+        maskConsultationData(consultation)
+      );
+
+      setConsultations(maskedData);
     } catch (error: any) {
       console.error('履歴取得エラー:', error);
       setError('履歴の取得に失敗しました');
