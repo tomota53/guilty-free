@@ -126,7 +126,7 @@ export default function Home() {
                     setError('');
                   }}
                   placeholder="例：有給を取って罪悪感がある"
-                  className="w-full h-40 md:h-48 p-4 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent dark:bg-gray-700 dark:text-white resize-none text-base md:text-lg transition-all"
+                  className="w-full h-40 md:h-48 p-4 border-2 border-gray-300 dark:border-gray-600 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none text-base md:text-lg transition-all"
                   disabled={isLoading}
                 />
 
