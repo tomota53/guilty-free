@@ -59,7 +59,7 @@ export default function HistoryPage() {
       <div className="container mx-auto px-4 py-8 md:py-12 max-w-4xl">
 
         {/* ヘッダー */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -74,6 +74,20 @@ export default function HistoryPage() {
             ← 戻る
           </Link>
         </div>
+
+        {/* 注意事項 */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-6 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg"
+        >
+          <p className="text-xs md:text-sm text-blue-800 dark:text-blue-300 flex items-start gap-2">
+            <span className="text-base">ℹ️</span>
+            <span>
+              この履歴には他のユーザーの相談内容も表示される可能性があります。プライバシー保護のため、個人情報は表示されません。
+            </span>
+          </p>
+        </motion.div>
 
         {/* コンテンツ */}
         {isLoading ? (

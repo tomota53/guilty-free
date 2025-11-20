@@ -292,10 +292,20 @@ export default function Home() {
                   </motion.div>
                 )}
 
+                {/* 注意事項 */}
+                <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
+                  <p className="text-xs md:text-sm text-yellow-800 dark:text-yellow-300 flex items-start gap-2">
+                    <span className="text-base">⚠️</span>
+                    <span>
+                      <strong>注意:</strong> 相談内容は他のユーザーも閲覧できる可能性があります。個人情報（氏名、住所、電話番号など）は絶対に入力しないでください。
+                    </span>
+                  </p>
+                </div>
+
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="mt-6 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-3 md:py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] disabled:hover:scale-100 shadow-lg text-base md:text-lg"
+                  className="mt-4 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-3 md:py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] disabled:hover:scale-100 shadow-lg text-base md:text-lg"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">

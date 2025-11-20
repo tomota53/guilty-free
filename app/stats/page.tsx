@@ -63,7 +63,7 @@ export default function StatsPage() {
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 dark:from-gray-900 dark:via-gray-800 dark:to-indigo-900">
       <div className="container mx-auto px-4 py-8 md:py-12 max-w-6xl">
         {/* ヘッダー */}
-        <div className="flex items-center justify-between mb-8">
+        <div className="flex items-center justify-between mb-6">
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -78,6 +78,20 @@ export default function StatsPage() {
             ← 戻る
           </Link>
         </div>
+
+        {/* 注意事項 */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mb-8 p-4 bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg"
+        >
+          <p className="text-xs md:text-sm text-blue-800 dark:text-blue-300 flex items-start gap-2">
+            <span className="text-base">ℹ️</span>
+            <span>
+              この統計には全ユーザーの相談データが含まれています。個人を特定できる情報は含まれていません。
+            </span>
+          </p>
+        </motion.div>
 
         {isLoading ? (
           <div className="text-center py-12">
