@@ -23,12 +23,21 @@ export const metadata: Metadata = {
     siteName: 'GuiltyFree',
     locale: 'ja_JP',
     type: 'website',
+    images: [
+      {
+        url: 'https://guilty-free.vercel.app/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'GuiltyFree - 罪悪感を和らげるAI',
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'GuiltyFree - 罪悪感を和らげるAI',
     description: 'キャリアコンサルタントの視点から、あなたの罪悪感を優しく和らげます',
     creator: '@GuiltyFree',
+    images: ['https://guilty-free.vercel.app/og-image.png'],
   },
   robots: {
     index: true,
