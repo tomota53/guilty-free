@@ -45,33 +45,8 @@ export default function TermsPage() {
               <ul className="list-disc list-inside space-y-2 ml-4">
                 <li><strong>本サービスは医療行為ではありません</strong>。AIによる回答は一般的な助言であり、医療診断や治療を目的としたものではありません。</li>
                 <li><strong>専門家の代替ではありません</strong>。心理的な問題や精神的な苦痛を抱えている場合は、必ず医師、臨床心理士、カウンセラーなどの専門家にご相談ください。</li>
-                <li><strong>緊急時は専門機関へ</strong>。自殺念慮や自傷行為の衝動がある場合は、直ちに専門機関に連絡してください。</li>
                 <li><strong>AIの限界</strong>。AIは人間の感情を完全に理解することはできません。回答の正確性や適切性を保証するものではありません。</li>
               </ul>
-            </div>
-          </section>
-
-          {/* 緊急連絡先 */}
-          <section className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-xl p-6">
-            <h2 className="text-xl md:text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4">
-              📞 緊急時の連絡先
-            </h2>
-            <div className="space-y-3 text-sm md:text-base text-gray-700 dark:text-gray-300">
-              <div>
-                <p className="font-semibold">いのちの電話</p>
-                <p className="ml-4">📞 0570-783-556（ナビダイヤル）</p>
-                <p className="ml-4 text-xs text-gray-600 dark:text-gray-400">毎日10:00～22:00</p>
-              </div>
-              <div>
-                <p className="font-semibold">よりそいホットライン</p>
-                <p className="ml-4">📞 0120-279-338（無料）</p>
-                <p className="ml-4 text-xs text-gray-600 dark:text-gray-400">24時間対応</p>
-              </div>
-              <div>
-                <p className="font-semibold">こころの健康相談統一ダイヤル</p>
-                <p className="ml-4">📞 0570-064-556</p>
-                <p className="ml-4 text-xs text-gray-600 dark:text-gray-400">各都道府県・政令指定都市が実施（対応時間は地域により異なる）</p>
-              </div>
             </div>
           </section>
 
