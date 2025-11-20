@@ -122,13 +122,13 @@ export default function Home() {
   };
 
   const handleShareTwitter = () => {
-    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\n#GuiltyFree #罪悪感 #セルフケア #キャリアコンサルタント`;
+    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\nhttps://guilty-free.vercel.app\n\n#GuiltyFree #罪悪感 #セルフケア #キャリアコンサルタント`;
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
 
   const handleShareLine = () => {
-    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\n#GuiltyFree #罪悪感 #セルフケア #キャリアコンサルタント`;
+    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\nhttps://guilty-free.vercel.app\n\n#GuiltyFree #罪悪感 #セルフケア #キャリアコンサルタント`;
     const url = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
