@@ -22,7 +22,10 @@ export async function POST(request: Request) {
     }
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+    // gemini-flash-latestを使用（常に最新のFlashモデルを指す）
+    const model = genAI.getGenerativeModel({
+      model: "gemini-flash-latest"
+    });
 
     // プロンプト設計
     const prompt = `
