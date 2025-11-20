@@ -2,7 +2,6 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
 
 export default function Home() {
   const [guiltContent, setGuiltContent] = useState('');
@@ -99,24 +98,6 @@ export default function Home() {
       }
 
       setAiResponse(data.response);
-
-      // Supabaseに保存
-      try {
-        await fetch('/api/save', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            guiltContent,
-            aiResponse: data.response,
-            category: selectedCategory,
-            userId: null, // 認証実装後はauth.user.idを使用
-          }),
-        });
-      } catch (saveError) {
-        // 保存失敗してもエラーは表示しない（UXを損ねないため）
-        console.error('保存エラー:', saveError);
-      }
-
     } catch (error: any) {
       console.error('エラー:', error);
       setError(error.message || 'エラーが発生しました');
@@ -170,20 +151,6 @@ export default function Home() {
           <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400 mt-2">
             キャリアコンサルタントの視点から、あなたの心を軽くします
           </p>
-          <div className="mt-4 flex gap-4 justify-center">
-            <Link
-              href="/history"
-              className="text-blue-600 dark:text-blue-400 hover:underline text-sm"
-            >
-              📚 相談履歴を見る
-            </Link>
-            <Link
-              href="/stats"
-              className="text-purple-600 dark:text-purple-400 hover:underline text-sm"
-            >
-              📊 統計・分析
-            </Link>
-          </div>
         </motion.div>
 
         {/* メインコンテンツ */}
@@ -292,20 +259,10 @@ export default function Home() {
                   </motion.div>
                 )}
 
-                {/* 注意事項 */}
-                <div className="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-                  <p className="text-xs md:text-sm text-yellow-800 dark:text-yellow-300 flex items-start gap-2">
-                    <span className="text-base">⚠️</span>
-                    <span>
-                      <strong>注意:</strong> 相談内容は他のユーザーも閲覧できる可能性があります。個人情報（氏名、住所、電話番号など）は絶対に入力しないでください。
-                    </span>
-                  </p>
-                </div>
-
                 <button
                   type="submit"
                   disabled={isLoading}
-                  className="mt-4 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-3 md:py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] disabled:hover:scale-100 shadow-lg text-base md:text-lg"
+                  className="mt-6 w-full bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 disabled:from-gray-400 disabled:to-gray-500 text-white font-semibold py-3 md:py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] disabled:hover:scale-100 shadow-lg text-base md:text-lg"
                 >
                   {isLoading ? (
                     <span className="flex items-center justify-center">
