@@ -2,6 +2,12 @@
 
 import Link from 'next/link';
 import { motion } from 'framer-motion';
+import type { Metadata } from 'next';
+
+// Note: 'use client'コンポーネントではexport const metadataは使えないため、
+// SEO対策としてHead要素を動的に設定する必要があります
+// 本来は別のServerコンポーネントとして作成するのが理想ですが、
+// 現在のアニメーション実装を維持するため、layout.tsxのメタデータに依存します
 
 export default function TermsPage() {
   return (
