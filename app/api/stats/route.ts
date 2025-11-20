@@ -3,13 +3,27 @@ import { supabase } from '@/lib/supabase';
 
 export async function GET() {
   try {
-    // 全ての相談データを取得
+    // 全ての相談データを取得（categoryカラムがない場合も考慮）
     const { data: consultations, error } = await supabase
       .from('consultations')
-      .select('category, created_at')
+      .select('*')
       .order('created_at', { ascending: false });
 
-    if (error) throw error;
+    if (error) {
+      console.error('Supabaseエラー:', error);
+      throw error;
+    }
+
+    // データが空の場合
+    if (!consultations || consultations.length === 0) {
+      return NextResponse.json({
+        total: 0,
+        categoryStats: {},
+        monthlyStats: {},
+        recentCategoryStats: {},
+        recentTotal: 0,
+      });
+    }
 
     // カテゴリー別の統計
     const categoryStats = consultations?.reduce((acc: any, item) => {
