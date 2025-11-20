@@ -9,6 +9,7 @@ interface Consultation {
   id: string;
   guilt_content: string;
   ai_response: string;
+  category: string | null;
   created_at: string;
 }
 
@@ -16,6 +17,19 @@ export default function HistoryPage() {
   const [consultations, setConsultations] = useState<Consultation[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState('');
+
+  const categories = [
+    { value: 'work', label: '仕事', icon: '💼' },
+    { value: 'family', label: '家族', icon: '👨‍👩‍👧‍👦' },
+    { value: 'self', label: '自分の時間', icon: '⏰' },
+    { value: 'money', label: 'お金', icon: '💰' },
+    { value: 'other', label: 'その他', icon: '📝' },
+  ];
+
+  const getCategoryLabel = (value: string | null) => {
+    if (!value) return null;
+    return categories.find((c) => c.value === value);
+  };
 
   useEffect(() => {
     fetchHistory();
@@ -101,16 +115,23 @@ export default function HistoryPage() {
                 transition={{ delay: index * 0.1 }}
                 className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow"
               >
-                <div className="flex items-start justify-between mb-3">
-                  <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
-                    {new Date(consultation.created_at).toLocaleString('ja-JP', {
-                      year: 'numeric',
-                      month: 'long',
-                      day: 'numeric',
-                      hour: '2-digit',
-                      minute: '2-digit',
-                    })}
-                  </p>
+                <div className="flex items-start justify-between mb-3 flex-wrap gap-2">
+                  <div className="flex items-center gap-2">
+                    <p className="text-xs md:text-sm text-gray-500 dark:text-gray-400">
+                      {new Date(consultation.created_at).toLocaleString('ja-JP', {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                        hour: '2-digit',
+                        minute: '2-digit',
+                      })}
+                    </p>
+                    {consultation.category && getCategoryLabel(consultation.category) && (
+                      <span className="px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full text-xs font-medium">
+                        {getCategoryLabel(consultation.category)?.icon} {getCategoryLabel(consultation.category)?.label}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
                 <div className="mb-4">

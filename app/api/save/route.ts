@@ -3,7 +3,7 @@ import { supabase } from '@/lib/supabase';
 
 export async function POST(request: Request) {
   try {
-    const { guiltContent, aiResponse, userId } = await request.json();
+    const { guiltContent, aiResponse, category, userId } = await request.json();
 
     if (!guiltContent || !aiResponse) {
       return NextResponse.json(
@@ -19,6 +19,7 @@ export async function POST(request: Request) {
           user_id: userId || null,
           guilt_content: guiltContent,
           ai_response: aiResponse,
+          category: category || null,
         },
       ])
       .select();
