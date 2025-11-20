@@ -122,13 +122,13 @@ export default function Home() {
   };
 
   const handleShareTwitter = () => {
-    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\n#GuiltyFree #罪悪感 #セルフケア`;
+    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\n#GuiltyFree #罪悪感 #セルフケア #キャリアコンサルタント`;
     const url = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
 
   const handleShareLine = () => {
-    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。`;
+    const text = `GuiltyFreeで罪悪感を和らげました 🕊️\n\n自分を大切にすることは、悪いことではありません。\n\n#GuiltyFree #罪悪感 #セルフケア #キャリアコンサルタント`;
     const url = `https://line.me/R/msg/text/?${encodeURIComponent(text)}`;
     window.open(url, '_blank');
   };
@@ -379,12 +379,17 @@ export default function Home() {
           <p className="text-gray-600 dark:text-gray-400 text-sm md:text-base">
             💙 泣くことは弱さじゃない。感情をケアすることは、強さです。
           </p>
-          <Link
-            href="/terms"
-            className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors text-xs md:text-sm"
-          >
-            利用規約・免責事項
-          </Link>
+          <div className="space-y-2">
+            <p className="text-gray-700 dark:text-gray-300 text-xs md:text-sm font-medium">
+              キャリアコンサルタント監修
+            </p>
+            <Link
+              href="/terms"
+              className="text-gray-600 dark:text-gray-400 hover:text-blue-600 dark:hover:text-blue-400 hover:underline transition-colors text-xs md:text-sm inline-block"
+            >
+              利用規約・免責事項
+            </Link>
+          </div>
           <p className="text-gray-500 dark:text-gray-500 text-xs md:text-sm">
             Powered by Gemini AI
           </p>
